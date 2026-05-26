@@ -1,256 +1,438 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Voyage en Grèce — Carnet de voyage</title>
-<style>
-  :root{--paper:#f6f1e8;--ink:#24313f;--muted:#6b7280;--accent:#8b5e3c;--accent2:#1f6f78;--line:#ded6ca;--card:#fffdf9;}
-  *{box-sizing:border-box}
-  body{margin:0;background:linear-gradient(180deg,#f9f5ef 0%,#f3ede3 100%);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.55;}
-  a{color:inherit}
-  .wrap{max-width:1120px;margin:0 auto;padding:28px 22px 40px;}
-  .cover{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(21,53,69,.92),rgba(18,102,111,.86)),url('https://images.unsplash.com/photo-1468436139062-f60a71c5c892?auto=format&fit=crop&w=1600&q=80') center/cover;border-radius:28px;color:#fff;min-height:420px;padding:34px 36px;box-shadow:0 18px 40px rgba(0,0,0,.12);}
-  .eyebrow{letter-spacing:.14em;text-transform:uppercase;font:700 .78rem/1.2 Arial,Helvetica,sans-serif;opacity:.88}
-  h1{font-size:3rem;line-height:1.02;margin:12px 0 12px;max-width:760px}
-  .cover p{font:400 1.08rem/1.7 Arial,Helvetica,sans-serif;max-width:760px;margin:0 0 14px;opacity:.96}
-  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-  .tag{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(5px);padding:8px 12px;border-radius:999px;font:600 .9rem Arial,Helvetica,sans-serif}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 0}
-  .stat,.card,.section{background:var(--card);border:1px solid rgba(124,100,81,.18);border-radius:22px;box-shadow:0 8px 20px rgba(0,0,0,.04)}
-  .stat{padding:16px 18px}
-  .stat b{display:block;font:700 .78rem Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
-  .stat span{font:700 1.05rem Arial,Helvetica,sans-serif}
-  .section{padding:22px 22px 18px;margin-top:22px}
-  h2{font:700 1.55rem/1.2 Arial,Helvetica,sans-serif;margin:0 0 14px;color:#24313f;border-bottom:1px solid var(--line);padding-bottom:10px}
-  h3{font:700 1.05rem/1.3 Arial,Helvetica,sans-serif;margin:0 0 10px;color:var(--accent)}
-  p{margin:0 0 12px}
-  .muted{color:var(--muted);font-family:Arial,Helvetica,sans-serif}
-  .two{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
-  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .card{padding:16px 18px}
-  .day{padding:18px 18px 16px;border-left:5px solid var(--accent2);margin-top:14px}
-  .day:nth-child(odd){border-left-color:var(--accent)}
-  ul,ol{margin:8px 0 0 20px;padding:0}
-  li{margin:6px 0}
-  table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#fff}
-  th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-  th{background:#f6efe7;font:700 .9rem Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.05em}
-  tr:last-child td{border-bottom:none}
-  .tablewrap{overflow:auto}
-  .quote{font-style:italic;color:#3e4b57;border-left:4px solid #c9b89f;padding-left:12px;margin:8px 0 0}
-  .footer{padding:20px 0 0;text-align:center;color:var(--muted);font:400 .93rem Arial,Helvetica,sans-serif}
-  .small{font:400 .95rem Arial,Helvetica,sans-serif;color:var(--muted)}
-  .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#eef6f7;color:#1f6f78;font:700 .76rem Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase;margin-right:8px}
-  .pagebreak{page-break-after:always}
-  @media (max-width:900px){.grid,.cards,.two{grid-template-columns:1fr}.cover{min-height:auto;padding:24px}.cover h1{font-size:2.2rem}}
-  @media print{body{background:#fff}.wrap{max-width:none;padding:0}.cover,.section,.card,.stat{box-shadow:none}.cover{border-radius:0;min-height:auto}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Cyclades Confidentielles - Voyage sur Mesure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
+
+        :root {
+            --primary: #1a365d; /* Bleu nuit élégant */
+            --secondary: #cda434; /* Doré subtil */
+            --text-dark: #2d3748;
+            --text-light: #4a5568;
+            --bg-color: #faf9f6; /* Blanc cassé très léger */
+            --white: #ffffff;
+            --accent-bg: #f0f4f8;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-weight: 400;
+        }
+
+        /* --- Print & Pagination --- */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            body { background-color: var(--white); }
+            .page-break { page-break-before: always; }
+            .no-break { page-break-inside: avoid; }
+            .hero-section { height: 100vh !important; page-break-after: always; }
+            .container { padding: 2cm !important; max-width: 100% !important; }
+            .itinerary-day { box-shadow: none !important; border: 1px solid #eee; }
+            /* Hide URL links on print */
+            a { text-decoration: none; color: inherit; }
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Cover/Hero --- */
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(26, 54, 93, 0.3), rgba(26, 54, 93, 0.7));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 600px;
+            border: 1px solid var(--secondary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .tagline {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85em;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8em;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3em;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* --- Intro & Concept --- */
+        .concept-section {
+            text-align: center;
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .concept-section p {
+            font-size: 1.15em;
+            color: var(--text-light);
+        }
+
+        .concept-section::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: var(--secondary);
+            margin: 30px auto 0;
+        }
+
+        /* --- Itinerary --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .itinerary-day {
+            display: flex;
+            margin-bottom: 50px;
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .day-image {
+            width: 45%;
+            min-height: 350px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .day-content {
+            width: 55%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .day-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .day-title {
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        /* Encarts "Bonnes Adresses" */
+        .good-address {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: var(--accent-bg);
+            border-left: 3px solid var(--secondary);
+            position: relative;
+        }
+
+        .good-address::before {
+            content: '✦';
+            position: absolute;
+            left: -12px;
+            top: 20px;
+            color: var(--secondary);
+            background: var(--white);
+            border-radius: 50%;
+            padding: 2px;
+            font-size: 14px;
+        }
+
+        .good-address h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Lato', sans-serif;
+            color: var(--primary);
+        }
+
+        .good-address p {
+            margin: 0;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        /* --- Practical Info & Budget --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .info-card h3 {
+            font-size: 1.6em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 0;
+            border-bottom: 1px dotted #e2e8f0;
+            font-size: 0.95em;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        .price-total {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--primary);
+            padding-top: 20px !important;
+            border-bottom: none !important;
+        }
+
+        /* --- Images spécifiques --- */
+        .img-athens { background-image: url('https://images.unsplash.com/photo-1555992828-ca4dbe41d294?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
+        .img-naxos { background-image: url('https://images.unsplash.com/photo-1605337222881-22db1463cf17?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
+        .img-amorgos { background-image: url('https://images.unsplash.com/photo-1600670984180-8798993883ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
+        .img-folegandros { background-image: url('https://images.unsplash.com/photo-1533083656961-1250b7194f4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
+
+    </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="cover">
-    <div class="eyebrow">Carnet de voyage · Grèce · Cyclades</div>
-    <h1>Les îles grecques confidentielles, en version douce et solaire</h1>
-    <p>Un itinéraire pensé pour un couple qui veut prendre son temps, éviter la foule et profiter des plages, de la marche, des tavernes et de la mer Égée. Le tout en gardant un budget maîtrisé et un seul passage à Athènes à l’aller comme au retour.</p>
-    <div class="tags"><span class="tag">14 jours</span><span class="tag">2 personnes</span><span class="tag">Budget éco-moyen</span><span class="tag">Auberges réputées</span><span class="tag">Ferries et îles</span></div>
-  </div>
 
-  <div class="grid">
-    <div class="stat"><b>Voyageurs</b><span>2 personnes, en couple</span></div>
-    <div class="stat"><b>Dates</b><span>Fin août / début septembre 2026</span></div>
-    <div class="stat"><b>Budget</b><span>2 000–3 000 €/pers.</span></div>
-    <div class="stat"><b>Rythme</b><span>Relaxé à modéré</span></div>
-  </div>
-
-  <div class="section">
-    <h2>Esprit du voyage</h2>
-    <div class="two">
-      <div>
-        <p>Ce séjour privilégie les îles où l’on peut rester plusieurs nuits sans courir partout, avec des étapes simples, des plages accessibles, des randonnées agréables et de bonnes tables de village.</p>
-        <p>Les îles retenues sont volontairement moins évidentes que Santorin ou Mykonos : Naxos pour sa diversité, Amorgos pour son côté minéral et Folegandros pour son élégance calme.</p>
-      </div>
-      <div class="card">
-        <h3>Ce qu’on y cherche</h3>
-        <ul>
-          <li>Se détendre.</li>
-          <li>Marcher un peu chaque jour.</li>
-          <li>Bien manger sans se ruiner.</li>
-          <li>Profiter de la mer et de vraies plages.</li>
-          <li>Sortir boire un verre sans faire la fête tard.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Itinéraire jour par jour</h2>
-
-    <div class="day">
-      <h3>Jour 1 · Arrivée à Athènes</h3>
-      <p><span class="badge">Transport</span> Vol Paris CDG → Athènes, puis métro ligne 3 jusqu’à Monastiraki.</p>
-      <p><span class="badge">Soirée</span> Installation dans une auberge de jeunesse bien notée, balade dans Monastiraki, dîner simple dans une taverne du quartier.</p>
-      <p class="quote">Objectif : une seule nuit à Athènes, juste le temps de se poser avant les îles.</p>
+    <!-- Couverture -->
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="tagline">Échappée sur mesure</span>
+            <h1>Les Cyclades Confidentielles</h1>
+            <p>Athènes, Naxos, Amorgos & Folegandros</p>
+        </div>
     </div>
 
-    <div class="day">
-      <h3>Jour 2 · Ferry vers Naxos</h3>
-      <p><span class="badge">Transport</span> Métro jusqu’au Pirée, puis ferry pour Naxos.</p>
-      <p><span class="badge">Après-midi</span> Arrivée à Naxos Town, installation, première promenade sur le port.</p>
-      <p><span class="badge">Coucher de soleil</span> Portara, la grande porte de marbre face à la mer.</p>
+    <div class="container">
+
+        <!-- Concept -->
+        <div class="concept-section no-break">
+            <h2>L'Esprit de votre Voyage</h2>
+            <p>Un itinéraire pensé pour un couple désirant prendre son temps, éviter la foule et savourer l'authenticité des plages, des sentiers, des tavernes traditionnelles et de la mer Égée. Ce séjour privilégie les îles où l’on peut s'attarder plusieurs nuits sans hâte, avec un budget maîtrisé et une organisation fluide depuis Athènes.</p>
+            <p>Nous avons volontairement écarté les évidences pour sélectionner des îles de caractère : <strong>Naxos</strong> pour sa diversité généreuse, <strong>Amorgos</strong> pour sa minéralité majestueuse et <strong>Folegandros</strong> pour son élégance paisible.</p>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 class="section-title">Votre Itinéraire Jour par Jour</h2>
+
+        <!-- Etape 1 -->
+        <div class="itinerary-day no-break">
+            <div class="day-image img-athens"></div>
+            <div class="day-content">
+                <div class="day-subtitle">1 Nuit • Le Prélude</div>
+                <h3 class="day-title">Athènes, Douce Transition</h3>
+                <p>Vol depuis Paris CDG vers Athènes. Un transfert fluide en métro vous dépose au cœur du quartier historique de Monastiraki pour une installation dans une adresse de charme soignée.</p>
+                <p>L'objectif : une unique nuit pour s'imprégner de l'atmosphère athénienne avant de prendre le large le lendemain matin.</p>
+
+                <div class="good-address">
+                    <h4>Le Carnet d'Adresses</h4>
+                    <p>Dînez à la lueur de l'Acropole dans une taverne traditionnelle de Plaka, reconnue pour ses mezzés authentiques et son ambiance intimiste, parfaite pour célébrer le début du voyage.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Etape 2 -->
+        <div class="itinerary-day no-break">
+            <div class="day-content">
+                <div class="day-subtitle">Plusieurs Nuits • La Généreuse</div>
+                <h3 class="day-title">Naxos, Terroir & Mythologie</h3>
+                <p>Traversée maritime depuis Le Pirée. Installation à Naxos Town. Vous découvrez une île verdoyante, riche de son agriculture et de ses plages interminables.</p>
+                <p>Ne manquez pas l'instant suspendu au coucher du soleil face à la <em>Portara</em>, cette porte de marbre monumentale, vestige du temple d'Apollon s'élevant majestueusement face à la mer.</p>
+
+                <div class="good-address">
+                    <h4>Budget & Conseils</h4>
+                    <p>Prévoyez un budget très doux d'environ 70 à 100 € par jour et par personne. Les tavernes de l'arrière-pays offrent une gastronomie locale d'exception à des prix imbattables.</p>
+                </div>
+            </div>
+            <div class="day-image img-naxos"></div>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Etape 3 -->
+        <div class="itinerary-day no-break">
+            <div class="day-image img-amorgos"></div>
+            <div class="day-content">
+                <div class="day-subtitle">Plusieurs Nuits • Le Grand Bleu</div>
+                <h3 class="day-title">Amorgos, Beauté Sauvage</h3>
+                <p>Navigation vers la magnifique baie d'Aegiali. Installation dans une pension paisible. L'île se dévoile tout en contrastes : falaises vertigineuses, monastères suspendus et criques cristallines.</p>
+                <p>C'est l'étape idéale pour des randonnées spectaculaires suivies de baignades réparatrices.</p>
+
+                <div class="good-address">
+                    <h4>Le Carnet d'Adresses</h4>
+                    <p>En fin de journée, asseyez-vous sur le port d'Aegiali pour déguster un <em>Rakomelo</em> (Raki chaud au miel et épices), la boisson signature de l'île, dans une ambiance chaleureuse et hors du temps.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Etape 4 -->
+        <div class="itinerary-day no-break">
+            <div class="day-content">
+                <div class="day-subtitle">Plusieurs Nuits • Le Joyau Perché</div>
+                <h3 class="day-title">Folegandros, l'Élégance Calme</h3>
+                <p>Débarquement au petit port de Karavostasis puis ascension vers Chora, l'un des plus beaux villages des Cyclades, perché au bord d'une falaise vertigineuse.</p>
+                <p>La vie s'écoule lentement de place en place, à l'ombre des églises immaculées. Retour direct via Le Pirée puis aéroport d'Athènes pour clore ce périple sans nuit de transit supplémentaire.</p>
+
+                <div class="good-address">
+                    <h4>Budget & Conseils</h4>
+                    <p>Prévoyez environ 70 à 90 € par jour. L'île, plus exclusive, justifie de s'attabler sur les superbes places de Chora pour des dîners inoubliables sous les arbres.</p>
+                </div>
+            </div>
+            <div class="day-image img-folegandros"></div>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 class="section-title">Informations & Budget</h2>
+
+        <div class="info-grid no-break">
+            <!-- Budget -->
+            <div class="info-card">
+                <h3>Estimation Budgétaire</h3>
+                <p style="font-size: 0.9em; color: var(--text-light); margin-bottom: 20px;">Base 2 adultes, par personne pour 13 nuits.</p>
+                <table>
+                    <tr>
+                        <td>Vols A/R Paris–Athènes</td>
+                        <td style="text-align: right;">150 – 250 €</td>
+                    </tr>
+                    <tr>
+                        <td>Ferries inter-îles</td>
+                        <td style="text-align: right;">100 – 160 €</td>
+                    </tr>
+                    <tr>
+                        <td>Hébergements de charme</td>
+                        <td style="text-align: right;">350 – 500 €</td>
+                    </tr>
+                    <tr>
+                        <td>Restauration locale</td>
+                        <td style="text-align: right;">280 – 420 €</td>
+                    </tr>
+                    <tr>
+                        <td>Activités & Excursions</td>
+                        <td style="text-align: right;">100 – 200 €</td>
+                    </tr>
+                    <tr>
+                        <td>Transports sur place</td>
+                        <td style="text-align: right;">30 – 50 €</td>
+                    </tr>
+                    <tr>
+                        <td>Imprévus & Plaisirs</td>
+                        <td style="text-align: right;">80 – 150 €</td>
+                    </tr>
+                    <tr>
+                        <td class="price-total">Budget Estimé</td>
+                        <td class="price-total" style="text-align: right;">~ 1 090 – 1 730 €</td>
+                    </tr>
+                </table>
+                <p style="font-size: 0.85em; color: var(--text-light); margin-top: 20px; font-style: italic;">Note : Avec votre budget initial (2 000–3 000 €/pers), vous disposez d'une excellente marge pour surclasser certains hébergements ou privilégier des tables gastronomiques.</p>
+            </div>
+
+            <!-- Pratique -->
+            <div class="info-card">
+                <h3>Carnet Pratique</h3>
+                <table style="margin-bottom: 30px;">
+                    <tr>
+                        <td style="font-weight: bold; width: 40%;">Monnaie</td>
+                        <td>Euro (€)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Langue</td>
+                        <td>Grec (L'anglais est très bien compris dans les îles)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Électricité</td>
+                        <td>Type C/F (Mêmes prises qu'en France)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Urgences</td>
+                        <td>112</td>
+                    </tr>
+                </table>
+
+                <div class="good-address" style="margin-top: 0; background-color: var(--white); border: 1px solid #eee; border-left: 3px solid var(--secondary);">
+                    <h4>Notre Expertise</h4>
+                    <p style="font-size: 0.9em; line-height: 1.5;">Nous vous recommandons vivement de réserver vos billets de ferry en avance, particulièrement pour les trajets impliquant Amorgos et Folegandros, dont les liaisons sont moins fréquentes que pour les grandes îles.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="day">
-      <h3>Jours 3 à 6 · Naxos</h3>
-      <ul>
-        <li><strong>Jour 3 :</strong> Chora, quartier vénitien, petites boutiques, produits locaux et tavernes.</li>
-        <li><strong>Jour 4 :</strong> Plages du sud : Agios Prokopios et Agia Anna, baignade et repos.</li>
-        <li><strong>Jour 5 :</strong> Randonnée Chalki → Filoti → Mont Zeus (Zas).</li>
-        <li><strong>Jour 6 :</strong> Villages intérieurs comme Apeiranthos et plage de Plaka.</li>
-      </ul>
-      <p class="small">Budget journalier estimé : ~70–100 €/pers.</p>
-    </div>
-
-    <div class="day">
-      <h3>Jour 7 · Ferry Naxos → Amorgos</h3>
-      <p>Traversée vers Aegiali, installation dans une pension simple, première balade au port et dîner au calme.</p>
-    </div>
-
-    <div class="day">
-      <h3>Jours 8 à 10 · Amorgos</h3>
-      <ul>
-        <li><strong>Jour 8 :</strong> Monastère de Chozoviotissa et plage d’Agia Anna.</li>
-        <li><strong>Jour 9 :</strong> Randonnée Aegiali → Chora, puis apéritif en fin de journée.</li>
-        <li><strong>Jour 10 :</strong> Plongée, snorkeling et longue pause déjeuner au bord de l’eau.</li>
-      </ul>
-      <p class="small">Budget journalier estimé : ~60–90 €/pers.</p>
-    </div>
-
-    <div class="day">
-      <h3>Jour 11 · Ferry Amorgos → Folegandros</h3>
-      <p>Arrivée à Karavostasis, bus vers Chora, installation, découverte du village et dîner sur place.</p>
-    </div>
-
-    <div class="day">
-      <h3>Jours 12 & 13 · Folegandros</h3>
-      <ul>
-        <li><strong>Jour 12 :</strong> Chora, montée à Panagia, déjeuner à Agali et baignade.</li>
-        <li><strong>Jour 13 :</strong> Bateau-taxi vers Katergo, plage sauvage et dîner de clôture.</li>
-      </ul>
-      <p class="small">Budget journalier estimé : ~70–90 €/pers.</p>
-    </div>
-
-    <div class="day">
-      <h3>Jour 14 · Retour à Athènes puis vol</h3>
-      <p>Ferry Folegandros → Le Pirée puis métro direct vers l’aéroport. Pas de nuit supplémentaire à Athènes.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Budget estimatif</h2>
-    <div class="tablewrap">
-      <table>
-        <tr><th>Poste</th><th>Estimation</th></tr>
-        <tr><td>Vols A/R Paris–Athènes</td><td>150–250 €</td></tr>
-        <tr><td>Ferries inter-îles</td><td>100–160 €</td></tr>
-        <tr><td>Hébergement (13 nuits)</td><td>350–500 €</td></tr>
-        <tr><td>Restauration</td><td>280–420 €</td></tr>
-        <tr><td>Activités</td><td>100–200 €</td></tr>
-        <tr><td>Transports locaux</td><td>30–50 €</td></tr>
-        <tr><td>Divers / imprévus</td><td>80–150 €</td></tr>
-        <tr><th>Total estimé</th><th>~1 090 – 1 730 €/pers.</th></tr>
-      </table>
-    </div>
-    <p class="small">Le budget prévu de 2 000–3 000 €/pers. laisse une bonne marge pour améliorer certains hébergements ou multiplier les bons restos.</p>
-  </div>
-
-  <div class="section">
-    <h2>Préparation et réservations</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>À réserver maintenant</h3>
-        <ul>
-          <li>Vols A/R Paris–Athènes.</li>
-          <li>Auberge à Athènes pour une nuit.</li>
-          <li>Ferry Le Pirée → Naxos.</li>
-          <li>Ferry Naxos → Amorgos.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Un mois avant</h3>
-        <ul>
-          <li>Hébergements sur les 3 îles.</li>
-          <li>Ferries Amorgos → Folegandros et Folegandros → Pirée.</li>
-          <li>Prévenir la banque.</li>
-          <li>Télécharger les cartes hors ligne.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Bagages</h2>
-    <div class="two">
-      <div class="card">
-        <h3>Essentiels</h3>
-        <ul>
-          <li>Passeports + photocopies.</li>
-          <li>Cartes bancaires + téléphone + chargeur.</li>
-          <li>Crème solaire SPF50 et médicaments personnels.</li>
-          <li>Carte de secours et un peu d’espèces.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Vêtements & matériel</h3>
-        <ul>
-          <li>T-shirts légers, shorts, tenue pour les soirées.</li>
-          <li>Maillots de bain × 2.</li>
-          <li>Chaussures de marche et sandales.</li>
-          <li>Sac à dos, gourde, tuba, serviette microfibre.</li>
-          <li>Tenue couvrante pour les monastères.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Conseils utiles</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>À faire</h3>
-        <ul>
-          <li>Apprendre quelques mots grecs.</li>
-          <li>Dîner tard sans se presser.</li>
-          <li>Demander le plat du jour.</li>
-          <li>Prendre son temps dans les villages.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>À éviter</h3>
-        <ul>
-          <li>Maillot de bain dans les monastères ou villages.</li>
-          <li>Attendre les ferries à la dernière minute.</li>
-          <li>Négliger les espèces pour les tavernes et petits commerces.</li>
-          <li>Jeter le papier toilette dans les toilettes.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Informations pratiques</h2>
-    <div class="tablewrap">
-      <table>
-        <tr><th>Sujet</th><th>Détail</th></tr>
-        <tr><td>Monnaie</td><td>Euro (€)</td></tr>
-        <tr><td>Langue</td><td>Grec, anglais souvent compris dans les îles</td></tr>
-        <tr><td>Prises électriques</td><td>Type C/F — compatible depuis la France</td></tr>
-        <tr><td>Urgences</td><td>112</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="footer">Voyage en Grèce — Carnet de voyage</div>
-</div>
 </body>
 </html>
