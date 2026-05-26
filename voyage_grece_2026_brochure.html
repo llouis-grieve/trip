@@ -8,11 +8,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
 
         :root {
-            --primary: #1a365d; /* Bleu nuit élégant */
-            --secondary: #cda434; /* Doré subtil */
+            --primary: #1a365d; 
+            --secondary: #cda434; 
             --text-dark: #2d3748;
             --text-light: #4a5568;
-            --bg-color: #faf9f6; /* Blanc cassé très léger */
+            --bg-color: #faf9f6; 
             --white: #ffffff;
             --accent-bg: #f0f4f8;
         }
@@ -33,10 +33,7 @@
         }
 
         /* --- Print & Pagination --- */
-        @page {
-            size: A4;
-            margin: 0;
-        }
+        @page { size: A4; margin: 0; }
 
         @media print {
             body { background-color: var(--white); }
@@ -57,32 +54,42 @@
 
         /* --- Cover/Hero --- */
         .hero-section {
-            background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
+            position: relative;
             height: 80vh;
             min-height: 600px;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            overflow: hidden;
+            background-color: var(--primary); /* Fallback color */
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 0;
         }
 
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(rgba(26, 54, 93, 0.3), rgba(26, 54, 93, 0.7));
+            z-index: 1;
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             padding: 50px;
             background: rgba(255, 255, 255, 0.95);
             max-width: 600px;
             border: 1px solid var(--secondary);
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            /* Fix missing right margin issue */
+            box-sizing: border-box;
         }
 
         .tagline {
@@ -94,49 +101,16 @@
             display: block;
         }
 
-        .hero-content h1 {
-            font-size: 2.8em;
-            margin: 0 0 15px 0;
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.3em;
-            color: var(--text-light);
-            margin: 0;
-        }
+        .hero-content h1 { font-size: 2.8em; margin: 0 0 15px 0; line-height: 1.2; }
+        .hero-content p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3em; color: var(--text-light); margin: 0; }
 
         /* --- Intro & Concept --- */
-        .concept-section {
-            text-align: center;
-            padding: 60px 0;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .concept-section p {
-            font-size: 1.15em;
-            color: var(--text-light);
-        }
-
-        .concept-section::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background-color: var(--secondary);
-            margin: 30px auto 0;
-        }
+        .concept-section { text-align: center; padding: 60px 0; max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+        .concept-section p { font-size: 1.15em; color: var(--text-light); }
+        .concept-section::after { content: ''; display: block; width: 60px; height: 2px; background-color: var(--secondary); margin: 30px auto 0; }
 
         /* --- Itinerary --- */
-        .section-title {
-            text-align: center;
-            font-size: 2.2em;
-            margin: 60px 0 40px;
-            position: relative;
-        }
+        .section-title { text-align: center; font-size: 2.2em; margin: 60px 0 40px; position: relative; }
 
         .itinerary-day {
             display: flex;
@@ -145,14 +119,21 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             border-radius: 4px;
             overflow: hidden;
+            background-color: var(--white);
         }
 
         .day-image {
             width: 45%;
-            min-height: 350px;
-            background-size: cover;
-            background-position: center;
             position: relative;
+            background-color: #e2e8f0; /* Fallback color */
+        }
+
+        .day-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            object-fit: cover;
+            display: block;
         }
 
         .day-content {
@@ -161,175 +142,57 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            box-sizing: border-box; /* Ensures padding doesn't push text outside */
         }
 
-        .day-subtitle {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8em;
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
+        .day-subtitle { text-transform: uppercase; letter-spacing: 2px; font-size: 0.8em; color: var(--secondary); margin-bottom: 10px; }
+        .day-title { font-size: 1.8em; margin-top: 0; margin-bottom: 20px; line-height: 1.2; }
 
-        .day-title {
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 20px;
-            line-height: 1.2;
+        .good-address { 
+            margin-top: 25px; 
+            padding: 20px 25px; /* Added explicit right padding */
+            background-color: var(--accent-bg); 
+            border-left: 3px solid var(--secondary); 
+            position: relative; 
+            box-sizing: border-box; /* CRITICAL FIX: Ensures padding is part of width */
+            width: 100%; /* Ensure it spans the container properly */
         }
-
-        /* Encarts "Bonnes Adresses" */
-        .good-address {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: var(--accent-bg);
-            border-left: 3px solid var(--secondary);
-            position: relative;
-        }
-
-        .good-address::before {
-            content: '✦';
-            position: absolute;
-            left: -12px;
-            top: 20px;
-            color: var(--secondary);
-            background: var(--white);
-            border-radius: 50%;
-            padding: 2px;
-            font-size: 14px;
-        }
-
-        .good-address h4 {
-            margin: 0 0 10px 0;
-            font-size: 1.1em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Lato', sans-serif;
-            color: var(--primary);
-        }
-
-        .good-address p {
-            margin: 0;
-            font-size: 0.95em;
-            font-style: italic;
-        }
+        .good-address::before { content: '✦'; position: absolute; left: -12px; top: 20px; color: var(--secondary); background: var(--white); border-radius: 50%; padding: 2px; font-size: 14px; }
+        .good-address h4 { margin: 0 0 10px 0; font-size: 1.1em; text-transform: uppercase; letter-spacing: 1px; font-family: 'Lato', sans-serif; color: var(--primary); }
+        .good-address p { margin: 0; font-size: 0.95em; font-style: italic; }
 
         /* --- Practical Info & Budget --- */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .info-card {
-            background: var(--white);
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
-
-        .info-card h3 {
-            font-size: 1.6em;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-            margin-top: 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 12px 0;
-            border-bottom: 1px dotted #e2e8f0;
-            font-size: 0.95em;
-        }
-
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .info-card { background: var(--white); padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); box-sizing: border-box;}
+        .info-card h3 { font-size: 1.6em; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px 0; border-bottom: 1px dotted #e2e8f0; font-size: 0.95em; }
         tr:last-child td { border-bottom: none; }
-
-        .price-total {
-            font-size: 1.2em;
-            font-weight: 700;
-            color: var(--primary);
-            padding-top: 20px !important;
-            border-bottom: none !important;
-        }
-
-        /* --- Images spécifiques --- */
-        .img-athens { background-image: url('https://images.unsplash.com/photo-1555992828-ca4dbe41d294?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
-        .img-naxos { background-image: url('https://images.unsplash.com/photo-1605337222881-22db1463cf17?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
-        .img-amorgos { background-image: url('https://images.unsplash.com/photo-1600670984180-8798993883ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
-        .img-folegandros { background-image: url('https://images.unsplash.com/photo-1533083656961-1250b7194f4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); }
+        .price-total { font-size: 1.2em; font-weight: 700; color: var(--primary); padding-top: 20px !important; border-bottom: none !important; }
 
         /* ========================================= */
         /* --- MOBILE RESPONSIVE OPTIMIZATIONS ---   */
         /* ========================================= */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
+            .container { padding: 20px 15px; }
+            .hero-section { height: 60vh; min-height: 450px; }
+            .hero-content { padding: 35px 20px; margin: 0 15px; width: auto; /* Fix for mobile margin */ }
+            .hero-content h1 { font-size: 2.2em; }
+            .hero-content p { font-size: 1.1em; }
+            .concept-section { padding: 40px 10px; /* Added side padding */ }
+            .concept-section p { font-size: 1.05em; }
+            .section-title { font-size: 1.8em; margin: 40px 0 30px; }
 
-            /* Hero Section adjustments */
-            .hero-section {
-                height: 60vh;
-                min-height: 450px;
-            }
-            .hero-content {
-                padding: 35px 20px;
-                margin: 0 15px;
-                width: 100%;
-            }
-            .hero-content h1 {
-                font-size: 2.2em;
-            }
-            .hero-content p {
-                font-size: 1.1em;
-            }
+            .itinerary-day { flex-direction: column; margin-bottom: 40px; }
+            .day-image, .day-content { width: 100%; }
+            .day-image { order: -1; }
+            .day-image img { height: 250px; min-height: 250px; }
+            .day-content { padding: 30px 20px; }
+            .day-title { font-size: 1.6em; }
 
-            /* Intro Text */
-            .concept-section {
-                padding: 40px 0;
-            }
-            .concept-section p {
-                font-size: 1.05em;
-            }
-            .section-title {
-                font-size: 1.8em;
-                margin: 40px 0 30px;
-            }
-
-            /* Itinerary Days */
-            .itinerary-day {
-                flex-direction: column; /* Stack image on top, content below */
-                margin-bottom: 40px;
-            }
-            .day-image, .day-content {
-                width: 100%;
-            }
-            .day-image {
-                min-height: 250px;
-                order: -1; /* Forces the image to always be on top on mobile */
-            }
-            .day-content {
-                padding: 30px 20px;
-            }
-            .day-title {
-                font-size: 1.6em;
-            }
-
-            /* Info & Budget Grid */
-            .info-grid {
-                grid-template-columns: 1fr; /* Stack cards vertically */
-                gap: 30px;
-                margin-top: 30px;
-            }
-            .info-card {
-                padding: 30px 20px;
-            }
-            .info-card h3 {
-                font-size: 1.4em;
-            }
+            .info-grid { grid-template-columns: 1fr; gap: 30px; margin-top: 30px; }
+            .info-card { padding: 30px 20px; }
+            .info-card h3 { font-size: 1.4em; }
         }
     </style>
 </head>
@@ -337,6 +200,10 @@
 
     <!-- Couverture -->
     <div class="hero-section">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
+             alt="Cyclades" class="hero-bg" 
+             referrerpolicy="no-referrer" crossorigin="anonymous"
+             onerror="this.onerror=null; this.src='https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1600';">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <span class="tagline">Échappée sur mesure</span>
@@ -347,7 +214,6 @@
 
     <div class="container">
 
-        <!-- Concept -->
         <div class="concept-section no-break">
             <h2>L'Esprit de votre Voyage</h2>
             <p>Un itinéraire pensé pour un couple désirant prendre son temps, éviter la foule et savourer l'authenticité des plages, des sentiers, des tavernes traditionnelles et de la mer Égée. Ce séjour privilégie les îles où l’on peut s'attarder plusieurs nuits sans hâte, avec un budget maîtrisé et une organisation fluide depuis Athènes.</p>
@@ -355,21 +221,23 @@
         </div>
 
         <div class="page-break"></div>
-
         <h2 class="section-title">Votre Itinéraire Jour par Jour</h2>
 
         <!-- Etape 1 -->
         <div class="itinerary-day no-break">
-            <div class="day-image img-athens"></div>
+            <div class="day-image">
+                <img src="https://images.unsplash.com/photo-1555992828-ca4dbe41d294?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Athènes" referrerpolicy="no-referrer" crossorigin="anonymous"
+                     onerror="this.onerror=null; this.src='https://images.pexels.com/photos/164336/pexels-photo-164336.jpeg?auto=compress&cs=tinysrgb&w=1000';">
+            </div>
             <div class="day-content">
                 <div class="day-subtitle">1 Nuit • Le Prélude</div>
                 <h3 class="day-title">Athènes, Douce Transition</h3>
                 <p>Vol depuis Paris CDG vers Athènes. Un transfert fluide en métro vous dépose au cœur du quartier historique de Monastiraki pour une installation dans une adresse de charme soignée.</p>
                 <p>L'objectif : une unique nuit pour s'imprégner de l'atmosphère athénienne avant de prendre le large le lendemain matin.</p>
-
                 <div class="good-address">
                     <h4>Le Carnet d'Adresses</h4>
-                    <p>Dînez à la lueur de l'Acropole dans une taverne traditionnelle de Plaka, reconnue pour ses mezzés authentiques et son ambiance intimiste, parfaite pour célébrer le début du voyage.</p>
+                    <p>Dînez à la lueur de l'Acropole dans une taverne traditionnelle de Plaka, reconnue pour ses mezzés authentiques et son ambiance intimiste.</p>
                 </div>
             </div>
         </div>
@@ -380,30 +248,35 @@
                 <div class="day-subtitle">Plusieurs Nuits • La Généreuse</div>
                 <h3 class="day-title">Naxos, Terroir & Mythologie</h3>
                 <p>Traversée maritime depuis Le Pirée. Installation à Naxos Town. Vous découvrez une île verdoyante, riche de son agriculture et de ses plages interminables.</p>
-                <p>Ne manquez pas l'instant suspendu au coucher du soleil face à la <em>Portara</em>, cette porte de marbre monumentale, vestige du temple d'Apollon s'élevant majestueusement face à la mer.</p>
-
+                <p>Ne manquez pas l'instant suspendu au coucher du soleil face à la <em>Portara</em>, cette porte de marbre monumentale.</p>
                 <div class="good-address">
                     <h4>Budget & Conseils</h4>
-                    <p>Prévoyez un budget très doux d'environ 70 à 100 € par jour et par personne. Les tavernes de l'arrière-pays offrent une gastronomie locale d'exception à des prix imbattables.</p>
+                    <p>Prévoyez un budget doux d'environ 70 à 100 € par jour. Les tavernes de l'arrière-pays offrent une gastronomie d'exception à des prix imbattables.</p>
                 </div>
             </div>
-            <div class="day-image img-naxos"></div>
+            <div class="day-image">
+                <img src="https://images.unsplash.com/photo-1605337222881-22db1463cf17?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Naxos" referrerpolicy="no-referrer" crossorigin="anonymous"
+                     onerror="this.onerror=null; this.src='https://images.pexels.com/photos/1010646/pexels-photo-1010646.jpeg?auto=compress&cs=tinysrgb&w=1000';">
+            </div>
         </div>
 
         <div class="page-break"></div>
 
         <!-- Etape 3 -->
         <div class="itinerary-day no-break">
-            <div class="day-image img-amorgos"></div>
+            <div class="day-image">
+                <img src="https://images.unsplash.com/photo-1600670984180-8798993883ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Amorgos" referrerpolicy="no-referrer" crossorigin="anonymous"
+                     onerror="this.onerror=null; this.src='https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1000';">
+            </div>
             <div class="day-content">
                 <div class="day-subtitle">Plusieurs Nuits • Le Grand Bleu</div>
                 <h3 class="day-title">Amorgos, Beauté Sauvage</h3>
                 <p>Navigation vers la magnifique baie d'Aegiali. Installation dans une pension paisible. L'île se dévoile tout en contrastes : falaises vertigineuses, monastères suspendus et criques cristallines.</p>
-                <p>C'est l'étape idéale pour des randonnées spectaculaires suivies de baignades réparatrices.</p>
-
                 <div class="good-address">
                     <h4>Le Carnet d'Adresses</h4>
-                    <p>En fin de journée, asseyez-vous sur le port d'Aegiali pour déguster un <em>Rakomelo</em> (Raki chaud au miel et épices), la boisson signature de l'île, dans une ambiance chaleureuse et hors du temps.</p>
+                    <p>En fin de journée, asseyez-vous sur le port d'Aegiali pour déguster un <em>Rakomelo</em> (Raki chaud au miel et épices).</p>
                 </div>
             </div>
         </div>
@@ -414,14 +287,17 @@
                 <div class="day-subtitle">Plusieurs Nuits • Le Joyau Perché</div>
                 <h3 class="day-title">Folegandros, l'Élégance Calme</h3>
                 <p>Débarquement au petit port de Karavostasis puis ascension vers Chora, l'un des plus beaux villages des Cyclades, perché au bord d'une falaise vertigineuse.</p>
-                <p>La vie s'écoule lentement de place en place, à l'ombre des églises immaculées. Retour direct via Le Pirée puis aéroport d'Athènes pour clore ce périple sans nuit de transit supplémentaire.</p>
-
+                <p>La vie s'écoule lentement de place en place, à l'ombre des églises immaculées. Retour direct via Le Pirée.</p>
                 <div class="good-address">
                     <h4>Budget & Conseils</h4>
-                    <p>Prévoyez environ 70 à 90 € par jour. L'île, plus exclusive, justifie de s'attabler sur les superbes places de Chora pour des dîners inoubliables sous les arbres.</p>
+                    <p>Prévoyez environ 70 à 90 € par jour. L'île justifie de s'attabler sur les superbes places de Chora pour des dîners inoubliables.</p>
                 </div>
             </div>
-            <div class="day-image img-folegandros"></div>
+            <div class="day-image">
+                <img src="https://images.unsplash.com/photo-1533083656961-1250b7194f4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Folegandros" referrerpolicy="no-referrer" crossorigin="anonymous"
+                     onerror="this.onerror=null; this.src='https://images.pexels.com/photos/1010646/pexels-photo-1010646.jpeg?auto=compress&cs=tinysrgb&w=1000';">
+            </div>
         </div>
 
         <div class="page-break"></div>
@@ -429,72 +305,32 @@
         <h2 class="section-title">Informations & Budget</h2>
 
         <div class="info-grid no-break">
-            <!-- Budget -->
             <div class="info-card">
                 <h3>Estimation Budgétaire</h3>
                 <p style="font-size: 0.9em; color: var(--text-light); margin-bottom: 20px;">Base 2 adultes, par personne pour 13 nuits.</p>
                 <table>
-                    <tr>
-                        <td>Vols A/R Paris–Athènes</td>
-                        <td style="text-align: right;">150 – 250 €</td>
-                    </tr>
-                    <tr>
-                        <td>Ferries inter-îles</td>
-                        <td style="text-align: right;">100 – 160 €</td>
-                    </tr>
-                    <tr>
-                        <td>Hébergements de charme</td>
-                        <td style="text-align: right;">350 – 500 €</td>
-                    </tr>
-                    <tr>
-                        <td>Restauration locale</td>
-                        <td style="text-align: right;">280 – 420 €</td>
-                    </tr>
-                    <tr>
-                        <td>Activités & Excursions</td>
-                        <td style="text-align: right;">100 – 200 €</td>
-                    </tr>
-                    <tr>
-                        <td>Transports sur place</td>
-                        <td style="text-align: right;">30 – 50 €</td>
-                    </tr>
-                    <tr>
-                        <td>Imprévus & Plaisirs</td>
-                        <td style="text-align: right;">80 – 150 €</td>
-                    </tr>
-                    <tr>
-                        <td class="price-total">Budget Estimé</td>
-                        <td class="price-total" style="text-align: right;">~ 1 090 – 1 730 €</td>
-                    </tr>
+                    <tr><td>Vols A/R Paris–Athènes</td><td style="text-align: right;">150 – 250 €</td></tr>
+                    <tr><td>Ferries inter-îles</td><td style="text-align: right;">100 – 160 €</td></tr>
+                    <tr><td>Hébergements de charme</td><td style="text-align: right;">350 – 500 €</td></tr>
+                    <tr><td>Restauration locale</td><td style="text-align: right;">280 – 420 €</td></tr>
+                    <tr><td>Activités & Excursions</td><td style="text-align: right;">100 – 200 €</td></tr>
+                    <tr><td>Transports sur place</td><td style="text-align: right;">30 – 50 €</td></tr>
+                    <tr><td>Imprévus & Plaisirs</td><td style="text-align: right;">80 – 150 €</td></tr>
+                    <tr><td class="price-total">Budget Estimé</td><td class="price-total" style="text-align: right;">~ 1 090 – 1 730 €</td></tr>
                 </table>
-                <p style="font-size: 0.85em; color: var(--text-light); margin-top: 20px; font-style: italic;">Note : Avec votre budget initial (2 000–3 000 €/pers), vous disposez d'une excellente marge pour surclasser certains hébergements ou privilégier des tables gastronomiques.</p>
             </div>
 
-            <!-- Pratique -->
             <div class="info-card">
                 <h3>Carnet Pratique</h3>
                 <table style="margin-bottom: 30px;">
-                    <tr>
-                        <td style="font-weight: bold; width: 40%;">Monnaie</td>
-                        <td>Euro (€)</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold;">Langue</td>
-                        <td>Grec (L'anglais est très bien compris dans les îles)</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold;">Électricité</td>
-                        <td>Type C/F (Mêmes prises qu'en France)</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold;">Urgences</td>
-                        <td>112</td>
-                    </tr>
+                    <tr><td style="font-weight: bold; width: 40%;">Monnaie</td><td>Euro (€)</td></tr>
+                    <tr><td style="font-weight: bold;">Langue</td><td>Grec (L'anglais est très bien compris)</td></tr>
+                    <tr><td style="font-weight: bold;">Électricité</td><td>Type C/F (Mêmes prises qu'en France)</td></tr>
+                    <tr><td style="font-weight: bold;">Urgences</td><td>112</td></tr>
                 </table>
-
                 <div class="good-address" style="margin-top: 0; background-color: var(--white); border: 1px solid #eee; border-left: 3px solid var(--secondary);">
                     <h4>Notre Expertise</h4>
-                    <p style="font-size: 0.9em; line-height: 1.5;">Nous vous recommandons vivement de réserver vos billets de ferry en avance, particulièrement pour les trajets impliquant Amorgos et Folegandros, dont les liaisons sont moins fréquentes que pour les grandes îles.</p>
+                    <p style="font-size: 0.9em; line-height: 1.5;">Nous vous recommandons vivement de réserver vos billets de ferry en avance, particulièrement pour les trajets impliquant Amorgos et Folegandros.</p>
                 </div>
             </div>
         </div>
